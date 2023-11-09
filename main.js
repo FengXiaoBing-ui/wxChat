@@ -14,6 +14,7 @@ app.$mount()
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
 import store from "./store"
+import http from "./api/api.js"
 import { mixinH } from "/common/mixin.js"
 import navBar from "@/components/navBar"
 export function createApp() {
@@ -23,6 +24,8 @@ export function createApp() {
   app.use(store)
   
   app.config.globalProperties.$store = store
+  app.config.globalProperties.$http = http
+  
   // 注册全局组件
   app.component("navBar",navBar);
   return {

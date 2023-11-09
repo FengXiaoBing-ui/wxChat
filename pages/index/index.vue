@@ -12,17 +12,17 @@
 		</navBar>
 
 		<!-- 内容列表 -->
-		<swiper @change="swiperChange" :current="current" :style="'height:'+(windowHeight-navBarHeight-54)+'px'">
+		<swiper @change="swiperChange" :duration="0" :current="current" :style="'height:'+(windowHeight-navBarHeight-54)+'px'">
 			<swiper-item>
-				<view class="swiper-item">
+				<view class="swiper-item bg-white">
 					<scroll-view scroll-y="true" :style="'height:'+(windowHeight-navBarHeight-54)+'px'">
-						<chatList v-for="item in child" :key="item" :chatObj="item"></chatList>
+						<chatList v-for="(item,index) in myChatRoomList" :key="item" :chatObj="item"></chatList>
 					</scroll-view>
 				</view>
 			</swiper-item>
 			<swiper-item>
 				<view class="swiper-item">
-					<friendsList v-for="item in child" :key="item" :chatObj="item"></friendsList>
+					<friendsList v-for="item in myChatRoomList" :key="item" :chatObj="item"></friendsList>
 				</view>
 			</swiper-item>
 			<swiper-item>
@@ -54,6 +54,7 @@
 	import friendsList from "@/pages/index/components/friendsList"
 	import find from "@/pages/index/components/find"
 	import my from "@/pages/index/components/my"
+	
 	import {
 		mapState
 	} from "vuex"
@@ -66,17 +67,7 @@
 		},
 		data() {
 			return {
-				child: [{
-						name: "牛逼",
-						text: "你是？",
-						time: "13:55"
-					},
-					{
-						name: "牛逼红黄牌那几个",
-						text: "发动机哦啊三个",
-						time: "13:50"
-					}
-				],
+				myChatRoomList:[],
 				navTitle: "微信",
 				chatList: [],
 				current: 0,
@@ -125,11 +116,16 @@
 			async getFriends(index) {
 			},
 			async getChatList(index) {
+				const res = await this.$http.myChatRoom({userId:9527})
+				res.data.forEach(item => {
+					item.avatarArr = item.avatar.split(',')
+				})
+				this.myChatRoomList = res.data
+				console.log(this.myChatRoomList);
 			},
 			swiperChange(e) {
 				this.navTitle = this.tabbar[e.detail.current].title
 				this.current = e.detail.current
-				console.log(this.navTitle);
 			},
 			switchTabBar(index) {
 				this.current = index

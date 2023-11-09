@@ -1,7 +1,7 @@
 <template>
-	<view class="navBox w100" :style="'height:'+navBarHeight+'px'">
+	<view class="navBox w100" :style="'height:'+navBarHeight+'px'" style="border-bottom: 1rpx solid #eeeeef;background: #eeeeee;">
 		<view class="navBar w100 flex justify-between align-center" :style="'height:'+navBarHeight+'px'">
-			<view class="flex-sub flex align-center justify-start" style="position: relative;">
+			<view @click="back" class="flex-sub flex align-center justify-start" style="position: relative;">
 				<text v-if="autoBack" class="cuIcon-back margin-left-sm" style="font-size: 38rpx;"></text>
 				<slot name="left"></slot>
 			</view>
@@ -33,6 +33,11 @@
 		data(){
 			return{
 				
+			}
+		},
+		methods:{
+			back(){
+				uni.navigateBack()
 			}
 		}
 	}

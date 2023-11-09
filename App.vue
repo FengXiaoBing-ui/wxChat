@@ -19,4 +19,7 @@
 	body{
 		background: $uni-bg-color-grey;
 	}
+	.content{
+		background: $uni-bg-color-grey;
+	}
 </style>

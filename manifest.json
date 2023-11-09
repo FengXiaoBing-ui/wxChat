@@ -1,6 +1,6 @@
 {
     "name" : "wxchat",
-    "appid" : "__UNI__9DC04E1",
+    "appid" : "__UNI__4E5819A",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -56,9 +56,11 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxa861ba656c5f1237",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "ignoreDevUnusedFiles" : false,
+            "ignoreUploadUnusedFiles" : false
         },
         "usingComponents" : true
     },

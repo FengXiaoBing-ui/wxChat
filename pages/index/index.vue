@@ -122,6 +122,24 @@
 				})
 				this.myChatRoomList = res.data
 				console.log(this.myChatRoomList);
+				let arr = [
+					{
+						avatar: "http://192.168.3.20:30000/localUpload/view/20231109/4f6a14191e3e4310b9a1a497d1cc163e.jpg",
+						chatId: 2,
+						chatRoomId: 1,
+						chatRoomNumber: "201512120",
+						createTime: "2023-11-08 16:02:43",
+						isDelete: 0,
+						isGroup: 0,
+						isRevoke: 0,
+						isTop: 0,
+						nickName: "炮灰乙",
+						text: "单聊2",
+						type: 1,
+						userId: 9527,
+						userIdFrom: 9528
+					}
+				]
 			},
 			swiperChange(e) {
 				this.navTitle = this.tabbar[e.detail.current].title
